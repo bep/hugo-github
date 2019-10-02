@@ -1,0 +1,6 @@
+{{ $url := printf "https://api.github.com/repos/%s" . }}
+{{ with getenv "GITHUB_TOKEN"}}
+{{ $url = printf "%s?access_token=%s" $url . }}
+{{ end }}
+{{ $data := getJSON $url }}
+{{ return $data }}
